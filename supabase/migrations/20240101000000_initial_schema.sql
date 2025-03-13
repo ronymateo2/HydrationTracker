@@ -3,7 +3,7 @@
 -- User profiles table
 CREATE TABLE IF NOT EXISTS public.user_profiles (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id TEXT NOT NULL UNIQUE,
+  user_id UUID NOT NULL UNIQUE,  -- Changed from TEXT to UUID
   age INTEGER,
   gender TEXT,
   weight NUMERIC,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS public.user_profiles (
 -- Beverage logs table
 CREATE TABLE IF NOT EXISTS public.beverage_logs (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id TEXT NOT NULL,
+  user_id UUID NOT NULL,  -- Changed from TEXT to UUID
   beverage_type TEXT NOT NULL,
   amount INTEGER NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
