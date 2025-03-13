@@ -56,8 +56,29 @@ const QuickAddSection = ({
     },
   ],
 }: QuickAddSectionProps) => {
-  const handleQuickAdd = (beverageId: string, amount: number) => {
-    onAddBeverage({ type: beverageId, amount });
+  const handleQuickAdd = async (beverageId: string, amount: number) => {
+    // Call the API to log the beverage in Supabase
+    try {
+      const response = await fetch("/api/hydration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          beverage_type: beverageId,
+          amount,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to log beverage");
+      }
+
+      // Update the UI
+      onAddBeverage({ type: beverageId, amount });
+    } catch (error) {
+      console.error("Error logging beverage:", error);
+    }
   };
 
   return (

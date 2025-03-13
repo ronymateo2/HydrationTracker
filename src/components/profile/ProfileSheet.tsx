@@ -36,7 +36,7 @@ const ProfileSheet = ({
   const [activityLevel, setActivityLevel] = useState<string>("moderate");
   const [newGoal, setNewGoal] = useState<number>(2500);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     // Calculate new hydration goal based on user data
     // This is a simplified calculation - in a real app, this would be more sophisticated
     let calculatedGoal = 2500; // Default
@@ -61,14 +61,39 @@ const ProfileSheet = ({
     }
 
     setNewGoal(calculatedGoal);
-    onProfileUpdate({
-      age,
-      gender,
-      weight,
-      activityLevel,
-      newGoal: calculatedGoal,
-    });
-    onOpenChange(false);
+
+    try {
+      // Save profile to Supabase
+      const response = await fetch("/api/profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          age: ageNum,
+          gender,
+          weight: weightNum,
+          activity_level: activityLevel,
+          daily_goal: calculatedGoal,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save profile");
+      }
+
+      // Update the UI
+      onProfileUpdate({
+        age,
+        gender,
+        weight,
+        activityLevel,
+        newGoal: calculatedGoal,
+      });
+      onOpenChange(false);
+    } catch (error) {
+      console.error("Error saving profile:", error);
+    }
   };
 
   return (

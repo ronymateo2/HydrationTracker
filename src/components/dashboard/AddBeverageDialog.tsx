@@ -93,9 +93,30 @@ const AddBeverageDialog = ({
     }
   };
 
-  const handleAddBeverage = () => {
-    onAddBeverage(selectedType, servingSize);
-    onOpenChange(false);
+  const handleAddBeverage = async () => {
+    try {
+      // Call the API to log the beverage in Supabase
+      const response = await fetch("/api/hydration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          beverage_type: selectedType,
+          amount: servingSize,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to log beverage");
+      }
+
+      // Update the UI
+      onAddBeverage(selectedType, servingSize);
+      onOpenChange(false);
+    } catch (error) {
+      console.error("Error logging beverage:", error);
+    }
   };
 
   return (

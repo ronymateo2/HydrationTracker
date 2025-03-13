@@ -14,24 +14,66 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   const { data: session } = useSession();
 
-  const [currentIntake, setCurrentIntake] = useState<number>(1200);
+  const [currentIntake, setCurrentIntake] = useState<number>(0);
   const [dailyGoal, setDailyGoal] = useState<number>(2500);
   const [isAddBeverageOpen, setIsAddBeverageOpen] = useState<boolean>(false);
   const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
   const [isReminderOpen, setIsReminderOpen] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // Fetch user profile and hydration data when session changes
+  useEffect(() => {
+    if (session?.user?.id) {
+      fetchUserData();
+    }
+  }, [session?.user?.id]);
+
+  // Fetch user profile and today's hydration logs
+  const fetchUserData = async () => {
+    setIsLoading(true);
+    try {
+      // Fetch user profile
+      const profileRes = await fetch("/api/profile");
+      if (profileRes.ok) {
+        const profileData = await profileRes.json();
+        if (profileData.data) {
+          setDailyGoal(profileData.data.daily_goal);
+        }
+      }
+
+      // Fetch today's hydration logs
+      const today = new Date().toISOString().split("T")[0];
+      const hydrationRes = await fetch(`/api/hydration?startDate=${today}`);
+      if (hydrationRes.ok) {
+        const hydrationData = await hydrationRes.json();
+        if (hydrationData.data) {
+          // Calculate total intake for today
+          const totalIntake = hydrationData.data.reduce(
+            (sum: number, log: any) => sum + log.amount,
+            0,
+          );
+          setCurrentIntake(totalIntake);
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   // Handle adding a beverage
   const handleAddBeverage = (type: string, amount: number) => {
     setCurrentIntake((prev) => Math.min(prev + amount, dailyGoal));
-    // In a real app, this would also save the beverage to a database
+    // The actual API call is now handled in the AddBeverageDialog and QuickAddSection components
   };
 
   // Handle updating user profile
   const handleProfileUpdate = (userData: any) => {
-    // In a real app, this would update the user profile and recalculate the hydration goal
     if (userData?.newGoal) {
       setDailyGoal(userData.newGoal);
     }
+    // The actual API call is now handled in the ProfileSheet component
   };
 
   return (
