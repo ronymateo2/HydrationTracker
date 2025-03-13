@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import ProgressCard from "@/components/dashboard/ProgressCard";
 import QuickAddSection from "@/components/dashboard/QuickAddSection";
