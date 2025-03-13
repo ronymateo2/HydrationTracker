@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import ProgressCard from "@/components/dashboard/ProgressCard";
 import QuickAddSection from "@/components/dashboard/QuickAddSection";
 import AddBeverageDialog from "@/components/dashboard/AddBeverageDialog";
@@ -11,6 +12,8 @@ import ReminderDialog from "@/components/reminders/ReminderDialog";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const { data: session } = useSession();
+
   const [currentIntake, setCurrentIntake] = useState<number>(1200);
   const [dailyGoal, setDailyGoal] = useState<number>(2500);
   const [isAddBeverageOpen, setIsAddBeverageOpen] = useState<boolean>(false);
@@ -100,10 +103,21 @@ export default function Home() {
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
-                  <span className="text-blue-600 font-semibold">JD</span>
+                  <span className="text-blue-600 font-semibold">
+                    {session?.user?.name
+                      ? session.user.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .toUpperCase()
+                          .substring(0, 2)
+                      : "U"}
+                  </span>
                 </div>
                 <div>
-                  <h3 className="font-medium">John Doe</h3>
+                  <h3 className="font-medium">
+                    {session?.user?.name || "User"}
+                  </h3>
                   <p className="text-sm text-gray-500">
                     Hydration Goal: {dailyGoal}ml
                   </p>

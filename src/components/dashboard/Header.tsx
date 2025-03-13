@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { User, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import UserMenu from "@/components/auth/UserMenu";
 
 interface HeaderProps {
   onProfileClick?: () => void;
@@ -24,9 +25,7 @@ const Header = ({ onProfileClick = () => {} }: HeaderProps) => {
           <Button variant="ghost" size="icon">
             <Settings className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon" onClick={onProfileClick}>
-            <User className="h-5 w-5" />
-          </Button>
+          <UserMenu />
         </div>
       </div>
     </header>
