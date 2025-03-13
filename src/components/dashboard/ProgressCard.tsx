@@ -63,22 +63,22 @@ const ProgressCard = ({
         </div>
 
         {/* Quick Stats */}
-        <div className="flex w-full justify-between text-sm text-gray-500">
-          <div className="text-center">
-            <p className="font-medium">Daily Goal</p>
-            <p className="font-bold text-blue-500">
+        <div className="grid grid-cols-3 w-full gap-4 text-sm text-gray-500">
+          <div className="text-center px-2">
+            <p className="font-medium mb-1">Daily Goal</p>
+            <p className="font-bold text-blue-500 truncate">
               {dailyGoal} {unit}
             </p>
           </div>
-          <div className="text-center">
-            <p className="font-medium">Current Intake</p>
-            <p className="font-bold text-blue-500">
+          <div className="text-center px-2">
+            <p className="font-medium mb-1">Current Intake</p>
+            <p className="font-bold text-blue-500 truncate">
               {currentIntake} {unit}
             </p>
           </div>
-          <div className="text-center">
-            <p className="font-medium">Remaining</p>
-            <p className="font-bold text-blue-500">
+          <div className="text-center px-2">
+            <p className="font-medium mb-1">Remaining</p>
+            <p className="font-bold text-blue-500 truncate">
               {remaining} {unit}
             </p>
           </div>
