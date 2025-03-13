@@ -111,8 +111,10 @@ const AddBeverageDialog = ({
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-white">
         <DialogHeader>
-          <DialogTitle>Add Beverage</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-2xl font-bold text-gray-900">
+            Add Beverage
+          </DialogTitle>
+          <DialogDescription className="text-base text-gray-600">
             Select a beverage type and specify the serving size to track your
             hydration.
           </DialogDescription>
@@ -120,7 +122,10 @@ const AddBeverageDialog = ({
 
         <div className="grid gap-6 py-4">
           <div className="grid gap-2">
-            <label htmlFor="beverage-type" className="text-sm font-medium">
+            <label
+              htmlFor="beverage-type"
+              className="text-base font-medium text-gray-800"
+            >
               Beverage Type
             </label>
             <Select value={selectedType} onValueChange={handleTypeChange}>
@@ -129,7 +134,9 @@ const AddBeverageDialog = ({
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Beverages</SelectLabel>
+                  <SelectLabel className="text-base font-medium text-gray-800">
+                    Beverages
+                  </SelectLabel>
                   {beverageTypes.map((type) => (
                     <SelectItem
                       key={type.id}
@@ -140,7 +147,9 @@ const AddBeverageDialog = ({
                         <div className={`p-1 rounded-full ${type.color}`}>
                           {type.icon}
                         </div>
-                        {type.name}
+                        <span className="text-base font-medium">
+                          {type.name}
+                        </span>
                       </div>
                     </SelectItem>
                   ))}
@@ -150,7 +159,10 @@ const AddBeverageDialog = ({
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="serving-size" className="text-sm font-medium">
+            <label
+              htmlFor="serving-size"
+              className="text-base font-medium text-gray-800"
+            >
               Serving Size (ml)
             </label>
             <Input
@@ -177,14 +189,16 @@ const AddBeverageDialog = ({
             ))}
           </div>
 
-          <div className="bg-blue-50 p-3 rounded-md">
-            <div className="flex items-center gap-2">
+          <div className="bg-blue-50 p-4 rounded-md">
+            <div className="flex items-center gap-3">
               {beverageTypes.find((type) => type.id === selectedType)?.icon}
               <div>
-                <p className="text-sm font-medium">
+                <p className="text-base font-semibold text-gray-800">
                   {beverageTypes.find((type) => type.id === selectedType)?.name}
                 </p>
-                <p className="text-xs text-gray-500">{servingSize} ml</p>
+                <p className="text-sm text-gray-600 font-medium">
+                  {servingSize} ml
+                </p>
               </div>
             </div>
           </div>

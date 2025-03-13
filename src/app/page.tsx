@@ -66,8 +66,8 @@ export default function Home() {
             />
 
             {/* Quick Add Section */}
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="text-xl font-semibold text-gray-900">
+            <div className="flex items-center justify-between mb-4 mt-8">
+              <h2 className="text-2xl font-semibold text-gray-900">
                 Add Beverage
               </h2>
               <AddBeverageDialog
