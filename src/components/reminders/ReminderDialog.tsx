@@ -51,9 +51,12 @@ const ReminderDialog = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
-          <Bell className="h-4 w-4" />
-          <span>Set Reminders</span>
+        <Button
+          variant="outline"
+          className="flex items-center gap-2 text-base font-medium"
+        >
+          <Bell className="h-5 w-5 text-blue-600" />
+          <span className="text-gray-900">Set Reminders</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-white">

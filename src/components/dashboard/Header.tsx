@@ -16,7 +16,9 @@ const Header = ({ onProfileClick = () => {} }: HeaderProps) => {
           <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
             <span className="text-white font-bold">H</span>
           </div>
-          <h1 className="text-xl font-bold">Hydration Tracker</h1>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Hydration Tracker
+          </h1>
         </div>
         <div className="flex items-center space-x-2">
           <Button variant="ghost" size="icon">

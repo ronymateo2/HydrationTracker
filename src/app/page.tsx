@@ -67,7 +67,9 @@ export default function Home() {
 
             {/* Quick Add Section */}
             <div className="flex items-center justify-between mb-2">
-              <h2 className="text-xl font-semibold">Add Beverage</h2>
+              <h2 className="text-xl font-semibold text-gray-900">
+                Add Beverage
+              </h2>
               <AddBeverageDialog
                 open={isAddBeverageOpen}
                 onOpenChange={setIsAddBeverageOpen}
@@ -82,7 +84,7 @@ export default function Home() {
 
             {/* Statistics Tabs */}
             <div className="mt-8">
-              <h2 className="text-xl font-semibold mb-4">
+              <h2 className="text-xl font-semibold mb-4 text-gray-900">
                 Your Hydration Statistics
               </h2>
               <StatisticsTabs

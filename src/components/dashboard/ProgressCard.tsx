@@ -27,8 +27,8 @@ const ProgressCard = ({
   return (
     <Card className="w-full max-w-[700px] h-[300px] bg-white">
       <CardHeader>
-        <CardTitle className="text-xl font-bold flex items-center gap-2">
-          <Droplet className="h-5 w-5 text-blue-500" />
+        <CardTitle className="text-xl font-bold flex items-center gap-2 text-gray-900">
+          <Droplet className="h-5 w-5 text-blue-600" />
           Daily Hydration Progress
         </CardTitle>
       </CardHeader>
