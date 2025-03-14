@@ -110,7 +110,9 @@ const ProfileSheet = ({
         <div className="py-6 space-y-6">
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="age">Age</Label>
+              <Label htmlFor="age" className="text-gray-800">
+                Age
+              </Label>
               <Input
                 id="age"
                 type="number"
@@ -118,13 +120,16 @@ const ProfileSheet = ({
                 onChange={(e) => setAge(e.target.value)}
                 min={1}
                 max={120}
+                className="bg-white text-gray-800"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="gender">Gender</Label>
+              <Label htmlFor="gender" className="text-gray-800">
+                Gender
+              </Label>
               <Select value={gender} onValueChange={setGender}>
-                <SelectTrigger id="gender">
+                <SelectTrigger id="gender" className="bg-white text-gray-800">
                   <SelectValue placeholder="Select gender" />
                 </SelectTrigger>
                 <SelectContent>
@@ -136,7 +141,9 @@ const ProfileSheet = ({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="weight">Weight (kg)</Label>
+              <Label htmlFor="weight" className="text-gray-800">
+                Weight (kg)
+              </Label>
               <Input
                 id="weight"
                 type="number"
@@ -144,13 +151,16 @@ const ProfileSheet = ({
                 onChange={(e) => setWeight(e.target.value)}
                 min={1}
                 max={300}
+                className="bg-white text-gray-800"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="activity">Activity Level</Label>
+              <Label htmlFor="activity" className="text-gray-800">
+                Activity Level
+              </Label>
               <Select value={activityLevel} onValueChange={setActivityLevel}>
-                <SelectTrigger id="activity">
+                <SelectTrigger id="activity" className="bg-white text-gray-800">
                   <SelectValue placeholder="Select activity level" />
                 </SelectTrigger>
                 <SelectContent>
