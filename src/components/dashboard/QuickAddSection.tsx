@@ -84,7 +84,7 @@ const QuickAddSection = ({
   return (
     <div className="w-full bg-card p-6 rounded-lg shadow-sm border border-border">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-semibold text-gray-900">Quick Add</h2>
+        <h2 className="text-2xl font-semibold text-gray-100">Quick Add</h2>
         <Dialog>
           <DialogTrigger asChild>
             <Button

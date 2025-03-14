@@ -82,7 +82,7 @@ const AddBeverageDialog = ({
     setSelectedType(value);
     // Set default serving size based on beverage type
     setServingSize(
-      defaultServingSizes[value as keyof typeof defaultServingSizes],
+      defaultServingSizes[value as keyof typeof defaultServingSizes]
     );
   };
 
@@ -127,7 +127,7 @@ const AddBeverageDialog = ({
           className="flex items-center gap-2 text-base font-medium"
         >
           <PlusCircle className="h-5 w-5 text-blue-600" />
-          <span className="text-gray-900">Add Beverage</span>
+          <span className="text-blue-600">Add Beverage</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-white">
