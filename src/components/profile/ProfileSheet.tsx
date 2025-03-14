@@ -183,7 +183,10 @@ const ProfileSheet = ({
             </p>
           </div>
 
-          <Button onClick={handleSave} className="w-full">
+          <Button
+            onClick={handleSave}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          >
             Save Profile
           </Button>
         </div>
