@@ -76,12 +76,27 @@ const ReminderDialog = ({
             </Label>
             <Select value={frequency} onValueChange={setFrequency}>
               <SelectTrigger id="frequency">
-                <SelectValue placeholder="Select frequency" />
+                <SelectValue
+                  className="text-base"
+                  placeholder="Select frequency"
+                />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="hourly">Hourly</SelectItem>
-                <SelectItem value="custom">Custom Interval</SelectItem>
-                <SelectItem value="fixed_times">Fixed Times</SelectItem>
+                <SelectItem value="hourly">
+                  <span className="text-base font-medium text-gray-500">
+                    Hourly
+                  </span>
+                </SelectItem>
+                <SelectItem value="custom">
+                  <span className="text-base font-medium text-gray-500">
+                    Custom Interval
+                  </span>
+                </SelectItem>
+                <SelectItem value="fixed_times">
+                  <span className="text-base font-medium text-gray-500">
+                    Fixed Times
+                  </span>
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
