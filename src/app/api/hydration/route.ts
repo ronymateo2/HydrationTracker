@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const userId = token.sub;
+  const userId = token.sub; // This is a UUID string
   const { searchParams } = new URL(request.url);
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const userId = token.sub;
+  const userId = token.sub; // This is a UUID string
   const body = await request.json();
   const { beverage_type, amount } = body;
 
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
   const { data, error } = await supabase
     .from("beverage_logs")
     .insert({
-      user_id: userId,
+      user_id: userId, // This will be converted to UUID in the database
       beverage_type,
       amount,
       created_at: new Date().toISOString(),

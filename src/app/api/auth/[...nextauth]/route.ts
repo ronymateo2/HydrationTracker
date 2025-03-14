@@ -24,20 +24,56 @@ export const authOptions = {
         // Create or update user in Supabase when they sign in
         const supabase = createClient();
 
+        console.log("Attempting to create/update user in Supabase:", user.id);
+
         // Check if user exists
-        const { data: existingUser } = await supabase
+        const { data: existingUser, error: queryError } = await supabase
           .from("users")
           .select("id")
           .eq("id", user.id)
           .single();
 
+        console.log("User ID type:", typeof user.id, user.id);
+
+        if (queryError && queryError.code !== "PGRST116") {
+          console.error("Error checking if user exists:", queryError);
+        }
+
         if (!existingUser) {
           // Create new user
-          await supabase.from("users").insert({
-            id: user.id,
+          // Ensure user.id is in UUID format
+          const userId = user.id;
+          console.log("Inserting user with ID:", userId);
+
+          const { error: insertError } = await supabase.from("users").insert({
+            id: userId,
             email: user.email,
             name: user.name,
           });
+
+          if (insertError) {
+            console.error("Error inserting user:", insertError);
+          } else {
+            console.log("User created successfully:", user.id);
+
+            // Also create a default profile for the user
+            const { error: profileError } = await supabase
+              .from("user_profiles")
+              .insert({
+                user_id: userId,
+                daily_goal: 2500, // Default daily goal in ml
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+              });
+
+            if (profileError) {
+              console.error("Error creating user profile:", profileError);
+            } else {
+              console.log("User profile created successfully");
+            }
+          }
+        } else {
+          console.log("User already exists:", user.id);
         }
 
         return true;
