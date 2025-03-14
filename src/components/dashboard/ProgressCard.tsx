@@ -20,12 +20,12 @@ const ProgressCard = ({
   // Calculate progress percentage
   const progressPercentage = Math.min(
     Math.round((currentIntake / dailyGoal) * 100),
-    100,
+    100
   );
   const remaining = Math.max(dailyGoal - currentIntake, 0);
 
   return (
-    <Card className="w-full max-w-[700px] h-[300px] bg-white">
+    <Card className="w-full max-w-[700px] bg-white">
       <CardHeader>
         <CardTitle className="text-2xl font-bold flex items-center gap-2 text-gray-900">
           <Droplet className="h-6 w-6 text-blue-600" />

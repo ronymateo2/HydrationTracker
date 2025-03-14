@@ -50,7 +50,7 @@ export default function Home() {
           // Calculate total intake for today
           const totalIntake = hydrationData.data.reduce(
             (sum: number, log: any) => sum + log.amount,
-            0,
+            0
           );
           setCurrentIntake(totalIntake);
         }
@@ -157,7 +157,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-medium">
+                  <h3 className="font-medium text-black">
                     {session?.user?.name || "User"}
                   </h3>
                   <p className="text-sm text-gray-500">
@@ -176,7 +176,7 @@ export default function Home() {
             {/* Hydration Tips */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-semibold">Hydration Tips</h3>
+                <h3 className="font-semibold text-black">Hydration Tips</h3>
                 <ReminderDialog
                   open={isReminderOpen}
                   onOpenChange={setIsReminderOpen}
@@ -188,33 +188,41 @@ export default function Home() {
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start space-x-2">
                   <span className="text-blue-500 font-bold">•</span>
-                  <span>Drink a glass of water first thing in the morning</span>
+                  <span className="text-gray-500">
+                    Drink a glass of water first thing in the morning
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-blue-500 font-bold">•</span>
-                  <span>Keep a water bottle with you throughout the day</span>
+                  <span className="text-gray-500">
+                    Keep a water bottle with you throughout the day
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-blue-500 font-bold">•</span>
-                  <span>Set reminders to drink water every hour</span>
+                  <span className="text-gray-500">
+                    Set reminders to drink water every hour
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-blue-500 font-bold">•</span>
-                  <span>Eat water-rich fruits and vegetables</span>
+                  <span className="text-gray-500">
+                    Eat water-rich fruits and vegetables
+                  </span>
                 </li>
               </ul>
             </div>
 
             {/* Daily Streak */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <h3 className="font-semibold mb-3">Your Streak</h3>
+              <h3 className="font-semibold mb-3 text-black">Your Streak</h3>
               <div className="flex items-center justify-center space-x-2">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600">7</div>
                   <div className="text-xs text-gray-500">Days</div>
                 </div>
                 <div className="h-8 w-px bg-gray-200"></div>
-                <div className="text-sm">
+                <div className="text-sm text-gray-500">
                   <p>You've met your hydration goal for 7 days in a row!</p>
                   <p className="text-blue-600 font-medium mt-1">Keep it up!</p>
                 </div>
