@@ -21,6 +21,7 @@ import {
 interface StatisticsTabsProps {
   currentIntake?: number;
   dailyGoal?: number;
+  refreshTrigger?: number;
 }
 
 interface BeverageLog {
@@ -59,6 +60,7 @@ const formatWeek = (dateString: string) => {
 const StatisticsTabs = ({
   currentIntake = 0,
   dailyGoal = 2500,
+  refreshTrigger = 0,
 }: StatisticsTabsProps) => {
   const [dailyData, setDailyData] = useState<any[]>([]);
   const [weeklyData, setWeeklyData] = useState<any[]>([]);
@@ -75,7 +77,7 @@ const StatisticsTabs = ({
 
   useEffect(() => {
     fetchHydrationData();
-  }, []);
+  }, [refreshTrigger]);
 
   const fetchHydrationData = async () => {
     setIsLoading(true);

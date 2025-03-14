@@ -20,6 +20,7 @@ export default function Home() {
   const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
   const [isReminderOpen, setIsReminderOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [refreshTrigger, setRefreshTrigger] = useState<number>(0);
 
   // Fetch user profile and hydration data when session changes
   useEffect(() => {
@@ -66,6 +67,7 @@ export default function Home() {
   const refreshData = () => {
     if (session?.user?.id) {
       fetchUserData();
+      setRefreshTrigger((prev) => prev + 1);
     }
   };
 
@@ -144,6 +146,7 @@ export default function Home() {
               <StatisticsTabs
                 currentIntake={currentIntake}
                 dailyGoal={dailyGoal}
+                refreshTrigger={refreshTrigger}
               />
             </div>
           </div>
