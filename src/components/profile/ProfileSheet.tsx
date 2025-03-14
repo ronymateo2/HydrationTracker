@@ -100,7 +100,7 @@ const ProfileSheet = ({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent className="w-[400px] sm:w-[540px] bg-white">
         <SheetHeader>
-          <SheetTitle>User Profile</SheetTitle>
+          <SheetTitle className="text-gray-800">User Profile</SheetTitle>
           <SheetDescription>
             Update your profile information to get a personalized hydration
             goal.
