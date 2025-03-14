@@ -71,13 +71,18 @@ const QuickAddSection = ({
       });
 
       if (!response.ok) {
-        throw new Error("Failed to log beverage");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to log beverage");
       }
+
+      const result = await response.json();
+      console.log("Beverage logged successfully:", result);
 
       // Update the UI
       onAddBeverage({ type: beverageId, amount });
     } catch (error) {
       console.error("Error logging beverage:", error);
+      // You could add a toast notification here to show the error
     }
   };
 

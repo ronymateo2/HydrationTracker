@@ -50,7 +50,7 @@ export default function Home() {
           // Calculate total intake for today
           const totalIntake = hydrationData.data.reduce(
             (sum: number, log: any) => sum + log.amount,
-            0
+            0,
           );
           setCurrentIntake(totalIntake);
         }
@@ -62,10 +62,19 @@ export default function Home() {
     }
   };
 
+  // Refresh data after adding a beverage
+  const refreshData = () => {
+    if (session?.user?.id) {
+      fetchUserData();
+    }
+  };
+
   // Handle adding a beverage
   const handleAddBeverage = (type: string, amount: number) => {
     setCurrentIntake((prev) => Math.min(prev + amount, dailyGoal));
     // The actual API call is now handled in the AddBeverageDialog and QuickAddSection components
+    // Refresh data to ensure we have the latest from the database
+    refreshData();
   };
 
   // Handle updating user profile
