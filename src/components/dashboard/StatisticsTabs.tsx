@@ -114,7 +114,7 @@ const StatisticsTabs = ({
             <h4 className="text-sm font-medium text-gray-500 mb-2">
               Beverage Breakdown
             </h4>
-            <div className="h-48">
+            <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie

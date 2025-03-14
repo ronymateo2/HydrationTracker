@@ -56,12 +56,14 @@ const ReminderDialog = ({
           className="flex items-center gap-2 text-base font-medium"
         >
           <Bell className="h-5 w-5 text-blue-600" />
-          <span className="text-gray-900">Set Reminders</span>
+          <span className="text-blue-600">Set Reminders</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-white">
         <DialogHeader>
-          <DialogTitle>Hydration Reminders</DialogTitle>
+          <DialogTitle className="text-blue-600">
+            Hydration Reminders
+          </DialogTitle>
           <DialogDescription>
             Set up reminders to help you stay hydrated throughout the day.
           </DialogDescription>
@@ -69,7 +71,9 @@ const ReminderDialog = ({
 
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
-            <Label htmlFor="frequency">Reminder Frequency</Label>
+            <Label htmlFor="frequency" className="text-gray-500">
+              Reminder Frequency
+            </Label>
             <Select value={frequency} onValueChange={setFrequency}>
               <SelectTrigger id="frequency">
                 <SelectValue placeholder="Select frequency" />

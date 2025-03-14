@@ -155,7 +155,7 @@ const AddBeverageDialog = ({
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel className="text-base font-medium text-gray-800">
+                  <SelectLabel className="text-base font-medium text-gray-500">
                     Beverages
                   </SelectLabel>
                   {beverageTypes.map((type) => (
@@ -168,7 +168,7 @@ const AddBeverageDialog = ({
                         <div className={`p-1 rounded-full ${type.color}`}>
                           {type.icon}
                         </div>
-                        <span className="text-base font-medium">
+                        <span className="text-base font-medium text-gray-500">
                           {type.name}
                         </span>
                       </div>
