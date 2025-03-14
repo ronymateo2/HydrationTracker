@@ -98,7 +98,7 @@ const ProfileSheet = ({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-[400px] sm:w-[540px] bg-white">
+      <SheetContent className="w-[400px] sm:w-[540px] bg-white overflow-y-auto max-h-screen">
         <SheetHeader>
           <SheetTitle className="text-gray-800">User Profile</SheetTitle>
           <SheetDescription>
